@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>GTL PHANTOM // Advanced Telemetry Security Overlay — South Africa</title>
+<meta name="description" content="GTL Phantom is South Africa's anti-jam telemetry security overlay. Integrates with your existing fleet tracking — no hardware replacement. LoRa mesh, Iridium satellite, Silent Ghost Mode." />
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config={
+  theme:{
+    extend:{
+      colors:{
+        tacticalBlack:'#020408',
+        tacticalGrey:'#0B0F19',
+        tacticalDark:'#060b14',
+        terminalGreen:'#00FF66',
+        terminalAmber:'#FFB000',
+        alertOrange:'#FF5500',
+        alertRed:'#e74c3c'
+      },
+      fontFamily:{
+        mono:['Courier New','Courier','monospace'],
+        sans:['Inter','system-ui','-apple-system','sans-serif']
+      }
+    }
+  }
+}
+</script>
+<style>
+.glow{text-shadow:0 0 8px rgba(0,255,102,0.5)}
+body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+background:radial-gradient(ellipse at 20% 50%,rgba(0,255,102,0.02) 0%,transparent 70%);
+pointer-events:none;z-index:0}
+section,header,footer{position:relative;z-index:1}
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body class="bg-tacticalBlack text-gray-300 font-sans selection:bg-terminalGreen selection:text-black antialiased">
+
+<!-- STATUS BAR -->
+<div class="w-full bg-black border-b border-gray-800 px-4 py-2 text-[11px] flex flex-wrap justify-between items-center text-gray-600 font-mono">
+  <div>PRODUCT_PORTAL // GTL_PHANTOM // <span class="text-terminalGreen animate-pulse">ONLINE</span></div>
+  <a href="https://gtlholdings.co.za" class="text-gray-600 hover:text-white transition">&larr; Secure Parent Node: GTL Holdings</a>
+</div>
+
+<!-- NAV -->
+<header class="max-w-7xl mx-auto px-4 py-5 flex justify-between items-center border-b border-gray-900">
+  <div class="text-lg font-bold tracking-wider text-white">
+    <span class="text-gray-400">GTL</span> <span class="text-terminalGreen glow">PHANTOM</span>
+  </div>
+  <nav class="hidden md:flex items-center gap-6 text-[11px] uppercase tracking-[0.15em] text-gray-500">
+    <a href="#problem" class="hover:text-terminalGreen transition">The Threat</a>
+    <a href="#integration" class="hover:text-terminalGreen transition">Integration</a>
+    <a href="#demo" class="border border-terminalGreen px-4 py-2 text-terminalGreen hover:bg-terminalGreen hover:text-black transition font-bold">Deploy Overlay</a>
+  </nav>
+  <button class="md:hidden text-white text-xl" onclick="document.getElementById('mobileNav').classList.toggle('hidden')">☰</button>
+</header>
+
+<!-- MOBILE NAV -->
+<div id="mobileNav" class="hidden fixed inset-0 bg-tacticalBlack/98 z-50 flex flex-col items-center justify-center gap-8 text-sm uppercase tracking-widest">
+  <button onclick="this.parentElement.classList.add('hidden')" class="absolute top-6 right-6 text-white text-2xl">✕</button>
+  <a href="https://gtlholdings.co.za" onclick="this.closest('div').classList.add('hidden')" class="text-gray-600 hover:text-white">GTL Holdings</a>
+  <a href="#problem" onclick="this.closest('div').classList.add('hidden')" class="text-gray-400 hover:text-terminalGreen">The Threat</a>
+  <a href="#integration" onclick="this.closest('div').classList.add('hidden')" class="text-gray-400 hover:text-terminalGreen">Integration</a>
+  <a href="#demo" onclick="this.closest('div').classList.add('hidden')" class="border border-terminalGreen px-6 py-3 text-terminalGreen">Deploy Overlay</a>
+</div>
+
+<!-- HERO -->
+<section class="max-w-6xl mx-auto px-4 pt-24 pb-16 text-center">
+  <p class="text-[11px] uppercase tracking-[0.2em] text-alertOrange mb-5 font-bold font-sans animate-pulse">// INTERFERENCE PROTECTION INTERFACE //</p>
+  <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight leading-[1.05] mb-6 font-sans">
+    When jammers go on,<br />
+    <span class="text-gray-600 line-through decoration-alertOrange decoration-2">Cartrack</span>
+    <span class="text-gray-400"> goes blind.</span><br />
+    <span class="text-terminalGreen glow">GTL routes around them.</span>
+  </h1>
+  <p class="max-w-3xl mx-auto text-sm md:text-base text-gray-500 mb-8 leading-relaxed font-sans">
+    Do not replace your existing 4G cameras, MDVR platforms, or telematics dashboards. <strong class="text-white">GTL Phantom installs as a silent, unjammable security overlay</strong> that injects alternative mesh fallback protection into your current operational stream the moment cellular signals drop.
+  </p>
+  <div class="flex flex-col sm:flex-row justify-center gap-4">
+    <a href="#integration" class="bg-terminalGreen text-black font-bold uppercase text-xs px-8 py-4 tracking-[0.15em] hover:bg-white transition text-center">Interlock Your Existing Fleet System</a>
+    <a href="#problem" class="border border-gray-700 text-gray-400 uppercase text-xs px-8 py-4 tracking-[0.15em] hover:border-white hover:text-white transition text-center">Understand the Threat</a>
+  </div>
+  <!-- Trust stats -->
+  <div class="flex flex-wrap justify-center gap-8 mt-14 text-center">
+    <div><div class="text-2xl font-bold text-white font-mono">0</div><div class="text-[11px] text-gray-600 uppercase tracking-wider mt-1">GSM-dependent towers</div></div>
+    <div><div class="text-2xl font-bold text-white font-mono">2</div><div class="text-[11px] text-gray-600 uppercase tracking-wider mt-1">Live LoRa relay nodes</div></div>
+    <div><div class="text-2xl font-bold text-white font-mono">5</div><div class="text-[11px] text-gray-600 uppercase tracking-wider mt-1">Failover layers</div></div>
+    <div><div class="text-2xl font-bold text-white font-mono">135%</div><div class="text-[11px] text-gray-600 uppercase tracking-wider mt-1">B-BBEE procurement recognition</div></div>
+  </div>
+</section>
+
+<!-- PROBLEM SECTION -->
+<section id="problem" class="bg-tacticalGrey border-y border-gray-900 py-20 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[11px] uppercase tracking-[0.2em] text-terminalGreen mb-3 font-mono">// THE THREAT LANDSCAPE //</p>
+      <h2 class="text-2xl md:text-3xl font-bold text-white font-sans">Your current system has a blind spot</h2>
+      <p class="text-sm text-gray-500 mt-3 max-w-2xl mx-auto font-sans">Every major SA fleet tracking platform depends on GSM/4G. When jammers go live, they all go dark. GTL Phantom is the only layer that keeps tracking live.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="border border-gray-800 bg-black p-8">
+        <div class="text-alertOrange text-[11px] mb-4 font-bold font-mono">[THREAT_01]</div>
+        <h3 class="text-lg font-bold text-white mb-3 font-sans">Vehicle Getting Jammed?</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4 font-sans">Syndicates deploying R200 Alibaba jammers on the N3, N12, N4 corridors. GSM-dependent trackers vanish for 20-30 minutes. Enough time to strip and offload. GTL Phantom's LoRa mesh activates within 3 seconds of detection.</p>
+        <span class="text-xs text-terminalGreen underline hover:glow font-sans" onclick="document.getElementById('demo').scrollIntoView()">Request anti-jam demo &rarr;</span>
+      </div>
+      <div class="border border-gray-800 bg-black p-8">
+        <div class="text-alertOrange text-[11px] mb-4 font-bold font-mono">[THREAT_02]</div>
+        <h3 class="text-lg font-bold text-white mb-3 font-sans">Fuel Getting Stolen?</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4 font-sans">Physics-based AI cross-references GPS trajectory, engine RPM, and fuel burn rate. Flags siphoning, filling station fraud, and gradual tank breather taps. The fuel AI sits on top of your existing telemetry — no extra hardware.</p>
+        <span class="text-xs text-terminalGreen underline hover:glow font-sans" onclick="document.getElementById('demo').scrollIntoView()">View Fuel-Trajectory AI &rarr;</span>
+      </div>
+      <div class="border border-gray-800 bg-black p-8">
+        <div class="text-alertOrange text-[11px] mb-4 font-bold font-mono">[THREAT_03]</div>
+        <h3 class="text-lg font-bold text-white mb-3 font-sans">Dispatch Getting Hacked?</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4 font-sans">Syndicates compromising logistics platforms to redirect cargo without physical force. Driver delivers willingly because the dispatch system told them to. GTL Dispatch Shield detects digital hijacking patterns.</p>
+        <span class="text-xs text-terminalGreen underline hover:glow font-sans" onclick="document.getElementById('demo').scrollIntoView()">View Dispatch Shield &rarr;</span>
+      </div>
+    </div>
+    <!-- B-BBEE trust row -->
+    <div class="mt-12 flex flex-wrap justify-center gap-6 text-[11px] text-gray-600 uppercase tracking-wider font-sans">
+      <span class="border border-gray-800 px-4 py-2">B-BBEE LEVEL 1 — 135%</span>
+      <span class="border border-gray-800 px-4 py-2">100% BLACK YOUTH OWNED</span>
+      <span class="border border-gray-800 px-4 py-2">POPIA COMPLIANT</span>
+      <span class="border border-gray-800 px-4 py-2">SA DATA SOVEREIGNTY</span>
+    </div>
+  </div>
+</section>
+
+<!-- 3-STEP INTEGRATION -->
+<section id="integration" class="py-20 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[11px] uppercase tracking-[0.2em] text-terminalGreen mb-3 font-mono">// THE PLUG-AND-PLAY ARCHITECTURE //</p>
+      <h2 class="text-2xl md:text-3xl font-bold text-white font-sans">Zero friction. No re-hardware overhead.</h2>
+      <p class="text-sm text-gray-500 mt-3 font-sans">Keep everything you already own. Phantom layers on top.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+
+      <div class="border border-gray-800 bg-tacticalGrey p-8 relative">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-3xl font-bold text-terminalGreen font-mono">01</span>
+          <span class="text-[10px] uppercase tracking-[0.15em] text-gray-600 font-mono">Step</span>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-3 font-sans uppercase">Retain Current Assets</h3>
+        <p class="text-sm text-gray-500 leading-relaxed font-sans">Your existing MDVR video platforms, standard trackers, and management dashboards remain 100% active. Zero downtime for operators. Your control room sees no change in day-to-day operations.</p>
+      </div>
+
+      <div class="border border-gray-800 bg-tacticalGrey p-8 relative">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-3xl font-bold text-terminalGreen font-mono">02</span>
+          <span class="text-[10px] uppercase tracking-[0.15em] text-gray-600 font-mono">Step</span>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-3 font-sans uppercase">Deploy the Phantom Layer</h3>
+        <p class="text-sm text-gray-500 leading-relaxed font-sans">We link your host platform data output to our local VPS secure proxy and patch in a hidden GTL low-frequency fallback module on your high-value vehicles. One site visit, one installation.</p>
+      </div>
+
+      <div class="border border-gray-800 bg-tacticalGrey p-8 relative">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-3xl font-bold text-terminalGreen font-mono">03</span>
+          <span class="text-[10px] uppercase tracking-[0.15em] text-gray-600 font-mono">Step</span>
+        </div>
+        <h3 class="text-lg font-bold text-white mb-3 font-sans uppercase">Unstoppable Telemetry</h3>
+        <p class="text-sm text-gray-500 leading-relaxed font-sans">The instant syndicates engage jammers and your standard 4G interface freezes, GTL Phantom routes around the disruption via LoRa towers, Iridium satellite, and Silent Ghost Mode. Your track stays live.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="bg-tacticalGrey border-y border-gray-900 py-20 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="text-[11px] uppercase tracking-[0.2em] text-terminalGreen mb-3 font-mono">// COMPETITIVE COMPARISON //</p>
+      <h2 class="text-2xl font-bold text-white font-sans">See the gap</h2>
+    </div>
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="border-b border-gray-800 text-[11px] uppercase tracking-wider text-gray-500 font-sans">
+            <th class="text-left py-4 pr-4">Capability</th>
+            <th class="text-center py-4 px-4">Standard Tracking</th>
+            <th class="text-center py-4 px-4 text-terminalGreen">+ GTL Phantom Overlay</th>
+          </tr>
+        </thead>
+        <tbody class="text-gray-400">
+          <tr class="border-b border-gray-900"><td class="py-3 pr-4 text-white">GSM/LTE tracking</td><td class="text-center px-4 text-terminalGreen">✓</td><td class="text-center px-4 text-terminalGreen">✓</td></tr>
+          <tr class="border-b border-gray-900"><td class="py-3 pr-4 text-white font-bold">LoRa mesh failover (owned towers)</td><td class="text-center px-4 text-gray-700">✗</td><td class="text-center px-4 text-terminalGreen font-bold">✓</td></tr>
+          <tr class="border-b border-gray-900"><td class="py-3 pr-4 text-white font-bold">Iridium satellite backup</td><td class="text-center px-4 text-gray-700">✗</td><td class="text-center px-4 text-terminalGreen font-bold">✓</td></tr>
+          <tr class="border-b border-gray-900"><td class="py-3 pr-4 text-white">IMU dead reckoning (tracks without GPS)</td><td class="text-center px-4 text-gray-700">✗</td><td class="text-center px-4 text-terminalGreen">✓</td></tr>
+          <tr class="border-b border-gray-900"><td class="py-3 pr-4 text-white font-bold">Silent Ghost Mode (covert tracking)</td><td class="text-center px-4 text-gray-700">✗</td><td class="text-center px-4 text-terminalGreen font-bold">✓</td></tr>
+          <tr class="border-b border-gray-900"><td class="py-3 pr-4 text-white">Cross-border (SADC) coverage</td><td class="text-center px-4 text-gray-700">✗</td><td class="text-center px-4 text-terminalGreen">✓</td></tr>
+          <tr class="border-b border-gray-900"><td class="py-3 pr-4 text-white">Fuel AI (physics-based theft detection)</td><td class="text-center px-4 text-gray-700">✗</td><td class="text-center px-4 text-terminalGreen">✓</td></tr>
+          <tr class="border-b border-gray-900"><td class="py-3 pr-4 text-white">Dispatch Shield (anti-digital-hijack)</td><td class="text-center px-4 text-gray-700">✗</td><td class="text-center px-4 text-terminalGreen">✓</td></tr>
+          <tr class="border-b border-gray-900"><td class="py-3 pr-4 text-white font-bold">B-BBEE Level 1 — 135% procurement</td><td class="text-center px-4 text-gray-700">✗</td><td class="text-center px-4 text-terminalGreen font-bold">✓</td></tr>
+          <tr><td class="py-3 pr-4 text-white font-bold">SA-owned, sovereign infrastructure</td><td class="text-center px-4 text-gray-400">Depends on provider</td><td class="text-center px-4 text-terminalGreen font-bold">100% Black Youth</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIOS -->
+<section class="py-20 px-4">
+  <div class="max-w-7xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[11px] uppercase tracking-[0.2em] text-terminalGreen mb-3 font-mono">// DEPLOYMENT CONTEXTS //</p>
+      <h2 class="text-2xl font-bold text-white font-sans">What this looks like in operation</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="border border-gray-800 bg-tacticalGrey p-8">
+        <div class="text-alertOrange text-[11px] font-bold font-mono mb-2">SCENARIO_01</div>
+        <h3 class="text-lg font-bold text-white mb-3 font-sans">N3 Corridor Hijacking</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4 font-sans">Syndicate activates R200 jammer. Standard tracking loses signal. 30-minute blind spot.</p>
+        <p class="text-sm text-gray-400 leading-relaxed font-semibold font-sans"><span class="text-terminalGreen">With Phantom:</span> Tracker detects jamming, switches to LoRa mesh within 3 seconds. Silent Ghost Mode activates. Control room tracks vehicle to chop shop in real time. SAPS dispatched with exact coordinates.</p>
+      </div>
+      <div class="border border-gray-800 bg-tacticalGrey p-8">
+        <div class="text-alertOrange text-[11px] font-bold font-mono mb-2">SCENARIO_02</div>
+        <h3 class="text-lg font-bold text-white mb-3 font-sans">Cross-Border Freight — JHB to Lubumbashi</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4 font-sans">GSM drops after Beit Bridge. Standard trackers go dark for the entire SADC leg.</p>
+        <p class="text-sm text-gray-400 leading-relaxed font-semibold font-sans"><span class="text-terminalGreen">With Phantom:</span> Beyond LoRa range, Iridium SBD takes over. Event-triggered pings at R350/mo pass-through. Fleet manager sees vehicle position from any web browser — no roaming agreements, no GSM dependency.</p>
+      </div>
+      <div class="border border-gray-800 bg-tacticalGrey p-8">
+        <div class="text-alertOrange text-[11px] font-bold font-mono mb-2">SCENARIO_03</div>
+        <h3 class="text-lg font-bold text-white mb-3 font-sans">Fleet Fuel Theft — 15% Unexplained Loss</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4 font-sans">Standard telematics shows no anomalies. Driver reports are clean. Yet fuel burn is 15% over expected.</p>
+        <p class="text-sm text-gray-400 leading-relaxed font-semibold font-sans"><span class="text-terminalGreen">With Phantom Fuel AI:</span> Physics-based trajectory analysis detects mismatch between GPS velocity, engine RPM, and actual fuel burn. Flags siphoning, filling station fraud, and breather taps. Evidence-grade audit trail.</p>
+      </div>
+      <div class="border border-gray-800 bg-tacticalGrey p-8">
+        <div class="text-alertOrange text-[11px] font-bold font-mono mb-2">SCENARIO_04</div>
+        <h3 class="text-lg font-bold text-white mb-3 font-sans">Digital Hijack — Dispatch Compromised</h3>
+        <p class="text-sm text-gray-500 leading-relaxed mb-4 font-sans">Syndicate gains access to logistics platform. High-value cargo redirected to fake drop-off. Driver delivers willingly.</p>
+        <p class="text-sm text-gray-400 leading-relaxed font-semibold font-sans"><span class="text-terminalGreen">With Dispatch Shield:</span> Cross-references dispatch instructions against historical patterns, driver behavior, and delivery zone logic. Flags anomalous re-routes before cargo moves. Blocks unauthorized dispatch commands.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="bg-tacticalGrey border-y border-gray-900 py-20 px-4">
+  <div class="max-w-6xl mx-auto">
+    <div class="text-center mb-14">
+      <p class="text-[11px] uppercase tracking-[0.2em] text-terminalGreen mb-3 font-mono">// TRANSPARENT PRICING //</p>
+      <h2 class="text-2xl font-bold text-white font-sans">No hidden fees. No 36-month lock-in.</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="border border-gray-800 bg-black p-8">
+        <h3 class="text-sm uppercase tracking-wider text-gray-400 font-bold mb-2 font-sans">GhostNet Tier 1</h3>
+        <div class="text-3xl font-bold text-white font-mono mb-1">R2,800</div>
+        <div class="text-xs text-gray-500 mb-4">/ unit + R180-400/mo subscription</div>
+        <ul class="text-sm text-gray-500 space-y-2 font-sans">
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> LTE + LoRa 868MHz mesh</li>
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> GPS/GNSS + IMU dead reckoning</li>
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> CAN bus integration</li>
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> 8 hr battery backup</li>
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> Command dashboard access</li>
+        </ul>
+      </div>
+      <div class="border border-terminalGreen bg-black p-8 relative">
+        <div class="absolute -top-3 left-6 bg-terminalGreen text-black text-[10px] font-bold px-3 py-1 uppercase tracking-wider font-sans">Best for cross-border</div>
+        <h3 class="text-sm uppercase tracking-wider text-gray-400 font-bold mb-2 font-sans">GhostNet Tier 2</h3>
+        <div class="text-3xl font-bold text-white font-mono mb-1">R8,200</div>
+        <div class="text-xs text-gray-500 mb-4">/ unit + R350/mo Iridium pass-through</div>
+        <ul class="text-sm text-gray-500 space-y-2 font-sans">
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> All Tier 1 features</li>
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> Iridium SBD satellite</li>
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> Silent Ghost Mode</li>
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> Cross-border SADC coverage</li>
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> Real global coverage</li>
+        </ul>
+      </div>
+      <div class="border border-gray-800 bg-black p-8">
+        <h3 class="text-sm uppercase tracking-wider text-gray-400 font-bold mb-2 font-sans">GhostMesh</h3>
+        <div class="text-3xl font-bold text-white font-mono mb-1">R625</div>
+        <div class="text-xs text-gray-500 mb-4">/ hidden unit — 3 recommended per vehicle</div>
+        <ul class="text-sm text-gray-500 space-y-2 font-sans">
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> BLE peer monitoring</li>
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> Apple/Google Find My relay</li>
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> Anti-removal detection</li>
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> Cross-protocol pathfinding</li>
+          <li class="flex items-start gap-2"><span class="text-terminalGreen mt-1">✓</span> Graduated alert severity</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-8 text-center">
+      <p class="text-sm text-gray-500 font-sans">GhostCargo (PVoC), GhostAlert (medical), Fuel AI, and Dispatch Shield available as add-ons or standalone. <a href="#demo" class="text-terminalGreen underline">Contact for pricing.</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- LEAD GEN FORM -->
+<section id="demo" class="max-w-7xl mx-auto px-4 py-24">
+  <div class="max-w-xl mx-auto border border-gray-800 bg-tacticalGrey p-8 md:p-10">
+    <div class="mb-8 text-center">
+      <p class="text-[11px] uppercase tracking-[0.2em] text-alertOrange mb-3 font-mono">// SECURE OVERLAY DEPLOYMENT //</p>
+      <h2 class="text-xl font-bold text-white font-sans">Request a Controlled Jamming Demo</h2>
+      <p class="text-sm text-gray-500 mt-2 font-sans">We will run an active RF signal jammer against a Phantom-hardened tracker on your own asset — in your yard — to prove resilience. Book a 30-minute slot. No obligation.</p>
+    </div>
+    <form action="#" method="POST" class="space-y-5 text-sm">
+      <div>
+        <label class="block text-gray-400 text-[11px] uppercase tracking-wider mb-2 font-bold font-sans">Company / Operator Name</label>
+        <input type="text" required class="w-full bg-black border border-gray-800 p-3 text-white focus:outline-none focus:border-terminalGreen transition font-sans" placeholder="e.g., Gauteng Logistics Ltd" />
+      </div>
+      <div>
+        <label class="block text-gray-400 text-[11px] uppercase tracking-wider mb-2 font-bold font-sans">Contact Email</label>
+        <input type="email" required class="w-full bg-black border border-gray-800 p-3 text-white focus:outline-none focus:border-terminalGreen transition font-sans" placeholder="e.g., ops@yourcompany.co.za" />
+      </div>
+      <div>
+        <label class="block text-gray-400 text-[11px] uppercase tracking-wider mb-2 font-bold font-sans">Phone Number</label>
+        <input type="tel" class="w-full bg-black border border-gray-800 p-3 text-white focus:outline-none focus:border-terminalGreen transition font-sans" placeholder="+27 82 123 4567" />
+      </div>
+      <div>
+        <label class="block text-gray-400 text-[11px] uppercase tracking-wider mb-2 font-bold font-sans">Current Fleet Tracking Platform</label>
+        <input type="text" class="w-full bg-black border border-gray-800 p-3 text-white focus:outline-none focus:border-terminalGreen transition font-sans" placeholder="e.g., Cartrack, Netstar, MDVR client, custom platform" />
+      </div>
+      <div>
+        <label class="block text-gray-400 text-[11px] uppercase tracking-wider mb-2 font-bold font-sans">Primary Threats</label>
+        <div class="grid grid-cols-2 gap-3 text-xs font-sans">
+          <label class="flex items-center gap-2 text-gray-400 cursor-pointer"><input type="checkbox" class="accent-terminalGreen" /> GSM/GPS Jamming</label>
+          <label class="flex items-center gap-2 text-gray-400 cursor-pointer"><input type="checkbox" class="accent-terminalGreen" /> Fuel Theft</label>
+          <label class="flex items-center gap-2 text-gray-400 cursor-pointer"><input type="checkbox" class="accent-terminalGreen" /> Dispatch / Digital Hijack</label>
+          <label class="flex items-center gap-2 text-gray-400 cursor-pointer"><input type="checkbox" class="accent-terminalGreen" /> Cross-border Tracking</label>
+        </div>
+      </div>
+      <button type="submit" class="w-full bg-terminalGreen text-black font-bold uppercase text-xs p-4 tracking-[0.15em] hover:bg-white transition font-sans">Request Phantom Core Integration &rarr;</button>
+    </form>
+    <p class="text-[11px] text-gray-600 text-center mt-4 font-sans">Or call us: <a href="tel:+27790000000" class="text-terminalGreen underline">+27 79 000 0000</a> &nbsp;|&nbsp; <a href="#" class="text-terminalGreen underline">WhatsApp</a></p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="border-t border-gray-900 py-8 px-4">
+  <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-[11px] text-gray-600 font-sans">
+    <div>
+      <span class="text-white font-bold">GTL PHANTOM</span> — A division of <a href="https://gtlholdings.co.za" class="text-terminalGreen underline hover:glow">GTL Holdings (Pty) Ltd</a><br />
+      Reg 2023/914784/07 — Attridgeville, Pretoria — B-BBEE Level 1 (135%)
+    </div>
+    <div class="text-center md:text-right">
+      &copy; 2026 GTL Holdings. All rights reserved.<br />
+      100% Sovereign SA Infrastructure — Data hosted in South Africa
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="#" class="fixed bottom-6 right-6 w-14 h-14 rounded-full bg-terminalGreen text-black flex items-center justify-center text-2xl font-bold shadow-lg hover:scale-110 transition z-50 no-underline" title="Chat on WhatsApp">💬</a>
+
+</body>
+</html>
