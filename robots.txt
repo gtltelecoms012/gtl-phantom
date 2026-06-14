@@ -1,0 +1,4 @@
+# GTL Phantom
+User-agent: *
+Allow: /
+Sitemap: https://gtlholdings.co.za/phantom-sitemap.xml

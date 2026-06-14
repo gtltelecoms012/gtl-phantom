@@ -1,0 +1,4 @@
+# GTL Phantom — Netlify redirects
+/*            /index.html           200
+/phantom     /index.html           301
+/ghostnet    /index.html           301
